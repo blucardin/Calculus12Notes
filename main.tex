@@ -18,7 +18,7 @@
 \setlength{\footskip}{15pt}
 \setlength{\arrayrulewidth}{0.5mm}
 \setlength{\tabcolsep}{18pt}
-\renewcommand{\arraystretch}{1.5} 
+\renewcommand{\arraystretch}{2} 
 
 \usepackage{siunitx} % provides units
 \usepackage{cancel} % provides \cancel{} and \bcancel{} for crossing out in math mode
@@ -34,8 +34,8 @@
 % \usepackage{darkmode} 
 % \enabledarkmode
 
-\newcommand{\code}{Insert Course Code Here}
-\newcommand{\name}{Insert Course Name Here}
+\newcommand{\code}{MCV4U}
+\newcommand{\name}{Calculus and Vectors 12}
 \title{\code\ Course Notes}
 \author{Noah Virjee}
 \date{June 2022}
@@ -76,9 +76,129 @@ This document is a review of the \name\ course. I had some time on my hands and 
 \tableofcontents
 \pagebreak
 
-\section{Section 1}
-\subsection{Subsection 1}
-\boldindex{Definition} will be inserted into the index. 
+\section{Calculus}
+
+\subsection{Limits}
+The \boldindex{Limit} of a function is the value of a function as its input approaches some value. 
+\begin{equation}
+    \lim_{x\to a}f(x)
+\end{equation}
+
+The \boldindex{Right-hand Limit} is the value of a function as its input approaches some value from the positive side.
+\begin{equation}
+    \lim_{x\to a^{+}}f(x)
+\end{equation}
+
+The \boldindex{Left-hand Limit} is the value of a function as its input approaches some value from the negative side.
+\begin{equation}
+    \lim_{x\to a^{-}}f(x)
+\end{equation}
+
+The left and right hand limits only exist if there is no vertical asymptotes at $x$ and $f(x)$ exists at the x-values approaching $x$. 
+
+The limit of a function at a point only exists if both the left and right limits exist and are equal to each other. 
+
+A function is said to have \boldindex{Continuity} at a point if: 
+\begin{equation}
+    \lim_{x\to a}f(x) = f(x)
+\end{equation}
+
+\subsubsection{Limit Properties}
+
+Suppose that $\lim_{x \to a} f(x)$ and $\lim_{x \to a} g(x)$ exist.
+\begin{enumerate} 
+    \item \begin{equation}\lim_{x \to a} c = c\ ,\ c \in \mathbb{R}\end{equation}
+    \item \begin{equation}\lim_{x \to a} x = a\end{equation}
+    \item \begin{equation}\lim_{x \to a} [cf(x)] = c\lim_{x \to a} f(x)\ ,\ c \in \mathbb{R}\end{equation}
+    \item \begin{equation}\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)\end{equation}
+    \item \begin{equation}\lim_{x \to a} [f(x) \times g(x)] = \lim_{x \to a} f(x) \times \lim_{x \to a} g(x)\end{equation}
+    \item \begin{equation}\lim_{x \to a} \left(\frac{f(x)}{g(x)}\right) = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}\text{, if }\lim_{x \to a} g(x) \neq 0\end{equation}
+    \item \begin{equation}\lim_{x \to a} [f(x)]^n = [\lim_{x \to a} f(x)]^n\end{equation}
+\end{enumerate}
+
+If $\lim_{x \to a} \left(\frac{f(x)}{g(x)}\right) \text{ and }\lim_{x \to a} g(x) = 0$ you must remove the factor of $x$ from $f(x)$ and $g(x)$ by simplifying to evaluate the limit. In most cases this requires forming a difference of squares on the numerator. If you cannot remove the factor of $x$, the limit does not exist. 
+
+\subsection{Rate of Change}
+The \boldindex{Rate of Change} of a function is how much the y-values of the function change relative to the x-values. 
+
+\begin{enumerate}
+    \item The \boldindex{average rate of change} of a function over a given interval $[a,b]$ is given by $\frac{f(b) - f(a)}{b - a}$. In other words, it is the slope of the secant that joins the points $(a,f(a))$ and $(b,f(b))$.
+
+    \item The tangent to a function, $f$, at $x = a$, is the line that touches $f$ at $(a,f(a))$, and best approximates the function near $a$.
+\end{enumerate}
+
+
+The rate of change of a function at $x = a$ can be determined by evaluating the following limit: 
+\begin{equation}\lim_ {h \to 0} \frac{f(a+h) - f(a)}{h}\end{equation}
+
+This is often used to find and prove derivatives. 
+
+
+\subsection{Derivatives}
+
+The derivative of a function $f(x)$ (denoted as $f'(x)$) is a function such that $f'(x)$ at $x$ is equal to the slope of $f(x)$ at $x$. 
+
+Use these rules to determine the derivative of a function. 
+
+\begin{center}
+    \begin{tabular}{|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{6cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Basic Rules}} \\
+    \hline
+    \textbf{Function} & \textbf{Derivative} \\
+    \hline
+    $f(x) = c$ & $f'(x) = 0$ \\
+    \hline
+    $g(x) = c f(x)$ & $g'(x) = c f'(x)$ \\
+    \hline
+    $f(x) = x^n$ & $f'(x) = nx^{n-1}$ \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Composite Rules}} \\
+    \hline
+    $h(x) = f(x) \pm g(x)$ & $h'(x) = f'(x) \pm g'(x)$ \\
+    \hline
+    $h(x) = f(x) g(x)$ & $h'(x) = f'(x) g(x) + f(x) g'(x)$ \\
+    \hline
+    $h(x) = \frac{f(x)}{g(x)}$ & $h'(x) = \frac{f'(x) g(x) - f(x) g'(x)}{g(x)^2}$ \\
+    \hline
+    $h(x) = f(g(x))$ & $h'(x) = f'(g(x)) g'(x)$ \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Trigonometric Derivatives}} \\
+    \hline
+    $f(x) = \sin(x)$ & $f'(x) = \cos(x)$ \\
+    \hline
+    $f(x) = \cos(x)$ & $f'(x) = -\sin(x)$ \\
+    \hline
+    $f(x) = \tan(x)$ & $f'(x) = \sec^2(x)$ \\
+    \hline
+    $f(x) = \sec(x)$ & $f'(x) = \sec(x) \tan(x)$ \\
+    \hline
+    $f(x) = \cot(x)$ & $f'(x) = -\csc^2(x)$ \\
+    \hline
+    $f(x) = \csc(x)$ & $f'(x) = -\csc(x) \cot(x)$ \\
+    \hline
+    
+    \multicolumn{2}{|c|}{\textbf{Exponential Derivatives}} \\
+    \hline
+    $f(x) = a^x$ & $f'(x) = \ln(a) a^x$ \\
+    \hline
+
+    \multicolumn{2}{|c|}{\textbf{Logarithmic Derivatives}} \\
+    \hline
+    $f(x) = \log_a(x)$ & $f'(x) = \frac{1}{\ln(a) x}$ \\
+    \hline
+    $f(x) = \ln(x)$ & $f'(x) = \frac{1}{x}$ \\
+    \hline
+    
+    \end{tabular}
+    \end{center}
+
+
+\subsection{Implicit Differentiation}
+
+
+
+\section{Vectors}
 
 
 \pagebreak
